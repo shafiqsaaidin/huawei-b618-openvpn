@@ -1,0 +1,48 @@
+/*
+
+Script Created by Jerome Laliag <jeromelaliag@yahoo.com>
+
+*/
+
+body {
+	background: #000;
+	color: #FFF;
+	font-family: arial;
+	font-size: 12px;
+}
+
+textarea {
+	background: transparent;
+	color: #FFF;
+	font-family: arial;
+	font-size: 10px;
+	height: 150px;
+	overflow: hidden;
+	resize: none;
+	width: 100%;
+}
+
+ ::-webkit-file-upload-button, button, input, select {
+	background: transparent;
+	color: #FFF;
+	text-align: center;
+}
+
+.jeromelaliag {
+	color: #FFF;
+	font-size: 9px;
+}
+
+.body {
+	max-width: 500px;
+}
+
+option {
+	background-color: #000;
+	color: #FFF;
+}
+
+a {
+	text-decoration: none;
+	color: #FFF;
+}

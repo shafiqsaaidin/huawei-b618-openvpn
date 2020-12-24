@@ -1,0 +1,93 @@
+<!--
+
+Script Created by Jerome Laliag <jeromelaliag@yahoo.com>
+
+-->
+
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>OpenVPN</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="css/styles.css" />
+		<script src="js/jquery-3.3.1.min.js"></script>
+		<script src="js/script.js"></script>
+	</head>
+	<body>
+		<center>
+			<div class="body">
+				<a href="index.html">
+					<h1><font color="#f58220">Oᴘᴇɴ</font><font color="#1a3865">VPN</font></h1>
+				</a>
+				WAN IP Address: 
+				<text id="wanip">0.0.0.0</text>
+				<br/>
+				OpenVPN Status: 
+				<text id="openvpnstatus">Not running</text>
+				<br/>
+				VPN Status: 
+				<text id="vpnstatus">Disconnected</text>
+				<br/>
+				VPN IP Address: 
+				<text id="vpnip">0.0.0.0</text>
+				<br/>
+				<text id="usedata">Download: 0 KiB / 0.0 B
+					<br/>
+					Upload: 0 KiB / 0.0 B
+				</text>
+				<br/>
+				<br/>
+				OpenVPN Configuration
+				<br/>
+				Config Uploader
+				<form action="/cgi-bin/upload.cgi" method="post" enctype="multipart/form-data" onsubmit="alert('Upload successfully!')">
+					<input type="file" accept=".ovpn" name="openvpnconfig">
+					<input type="submit" name="upload" value="Upload">
+				</form>
+				<form action="/cgi-bin/save.cgi" method="post" enctype="multipart/form-data">
+					Select Config
+					<br/>
+					<text id="config"><select name="config"></select></text>
+					<button type="submit" formaction="/cgi-bin/delete.cgi" onclick="alert('Delete successfully!')">Delete</button>
+					<br/>
+					Username
+					<br/>
+					<input type="text" id="user" name="user" placeholder="Username">
+					<br/>
+					Password
+					<br/>
+					<input type="password" id="pass" name="pass" placeholder="Password">
+					<br/>
+					<input type="submit" name="submit" value="Save" onclick="alert('Save successfully!')">
+					<text id="ovpnbutton"><input type="button" onclick="javascript:connect()" value="Connect"></text>
+				</form>
+				<script>$("#config").load("/cgi-bin/configlist.cgi");</script>
+				<br/>
+				Startup
+				<br/>
+				<text id="openvpnstartup"><input type="button" onclick="javascript:addopenvpnstartup()" value="Enable"></text>
+				<br/>
+				<br/>
+				Device Options
+				<br/>
+				<button onclick="javascript:wanipchanger()">Change WAN IP</button>
+				<form method="post">
+					<button type="submit" formaction="/cgi-bin/reboot.cgi" formmethod="post" onclick="return confirm('Do you want to reboot?')">Reboot</button>
+					<button type="submit" formaction="/cgi-bin/poweroff.cgi" formmethod="post" onclick="return confirm('Do you want to poweroff?')">Power Off</button><br/>
+				</form>
+				<button onclick="location.href='changepass.html'">Change Password</button>
+				<br/><br/>
+				Logs
+				<br/>
+				<textarea id="logs" readonly></textarea>
+				<br/>
+				<button onclick="copylogs()">Copy Logs</button>
+				<button onclick="javascript:clearlogs()">Clear Logs</button>
+				<br/>
+				<br/>
+				<div class="jeromelaliag">jeromelaliag &copy;</div>
+			</div>
+		</center>
+	</body>
+</html>
